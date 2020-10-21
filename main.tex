@@ -1,0 +1,275 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[aspectratio=169, 11pt]{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+
+\usetheme[progressbar=frametitle]{metropolis}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{amsmath}
+\usepackage[english,brazil]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage{url,color}
+\usepackage{subfigure}
+\usepackage{amsthm,amsfonts,amssymb,amscd,amsxtra}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+% Set the overall layout of the tree
+\tikzstyle{level 1}=[level distance=3.5cm, sibling distance=2cm]
+\tikzstyle{level 2}=[level distance=3.5cm, sibling distance=1cm]
+
+% Define styles for bags and leafs
+\tikzstyle{bag} = [text width=4em, text centered]
+\tikzstyle{end} = [circle, minimum width=3pt,fill, inner sep=0pt]
+
+%Font
+%\usefonttheme{professionalfonts} % using non standard fonts for beamer
+%\usefonttheme{serif} % default family is serif
+%\setmainfont{Liberation Serif}
+
+%making the section titles appear before each section
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \setbeamertemplate{section in toc}[sections numbered]
+    \vspace{0.3cm}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[]{EC220 -- Introduction to Econometrics} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\subtitle{Week 3}
+
+\author{Arnaud Dy\`evre} % Your name
+\institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+}
+\date{October 15\textsuperscript{th} 2020} % Date, can be changed to a custom date
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{teo}{Theorem}
+\newtheorem{exemplo}{Exemplo}
+\newtheorem{corolario}{Corol\'{a}rio}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\x}{\textbf{x}}
+\newcommand{\y}{\textbf{y}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand{\dom}{\mathrm{dom}}
+\newcommand{\ad}{\mathrm{ad}}
+\newcommand{\gerado}{\mathrm{span}}
+
+
+\begin{document}
+
+
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+
+
+
+\begin{frame}{Miscellaneous}
+
+     
+\begin{itemize}[<+- | alert@+>]
+    \item Class is online for the rest of  term 
+    \item Groups for problem sets
+    \begin{itemize}
+        \item New students added to the class
+    \end{itemize}
+    \item Does everyone have a \texttt{Stata} license now?
+    \item Please submit your problem sets
+    \begin{itemize}
+        \item Important for your understanding of key concepts
+        \item Useful for mastering \texttt{Stata}
+    \end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Quick review of important notions}
+    \begin{itemize}[<+->]
+    \item Thinking about \textbf{counterfactuals}: Effect of insurance ($D_i$) on health ($Y_i$)
+    
+    % The sloped option gives rotated edge labels. Personally
+    % I find sloped labels a bit difficult to read. Remove the sloped options
+    % to get horizontal labels. 
+\begin{tikzpicture}[grow=right, sloped]
+\node[bag] {Sample pop.}
+    child {
+        node[bag] {Uninsured \\ $D_i = 0$}        
+            child {
+                node[end, label=right:
+                    {$\textcolor{red}{Y_{0i} | D_i = 0}$}] {}
+                edge from parent
+                node[above] {\scriptsize{\textcolor{red}{Observed}}}
+                node[below]  {}
+            }
+            child {
+                node[end, label=right:
+                    {$Y_{1i} | D_i = 0$}] {}
+                edge from parent
+                node[above] {\scriptsize{Unobserved}}
+                node[below]  {}
+            }
+            edge from parent 
+            node[above] {}
+            node[below]  {}
+    }
+    child {
+        node[bag] {Insured \\ $D_i = 1$}        
+        child {
+                node[end, label=right:
+                    {$Y_{0i} | D_i = 1$}] {}
+                edge from parent
+                node[above] {\scriptsize{Unobserved}}
+                node[below]  {}
+            }
+            child {
+                node[end, label=right:
+                    {$\textcolor{red}{Y_{1i} | D_i = 1}$}] {}
+                edge from parent
+                node[above] {\scriptsize{\textcolor{red}{Observed}}}
+                node[below]  {}
+            }
+        edge from parent         
+            node[above] {}
+            node[below]  {}
+    };
+\end{tikzpicture}
+    \item Observed difference $\mathbb{E}\left[\textcolor{red}{Y_{i} \mid D_{i}=1}\right]-\mathbb{E}\left[\textcolor{red}{Y_{i} \mid D_{i}=0}\right] = $ \\ 
+    $ \underbrace{\mathbb{E}\left[\textcolor{red}{Y_{1 i} \mid D_{i}=1}\right]-\mathbb{E}\left[Y_{0 i} \mid D_{i}=1\right]}_{\text {average treatment effect on the treated }} + \underbrace{\mathbb{E}\left[Y_{0 i} \mid D_{i}=1\right]-\mathbb{E}\left[\textcolor{red}{Y_{0 i} \mid D_{i}=0}\right]}_{\text {selection bias }} $
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Quick review of important notions}
+    \begin{itemize}[<+->]
+        \item \textbf{Counterfactual outcomes} (=potential outcomes): What would have happened to someone under the scenarios where they had or had not been treated.
+        \begin{itemize}
+            \item Informally ``Any outcome that can happen''
+        \end{itemize}
+        \item \textbf{Observed outcomes}: Potential outcomes that are realised
+        \begin{itemize}
+            \item Informally, ``What actually happens''
+        \end{itemize}
+        \item \textbf{Selection bias}: Difference between the potential untreated outcomes ($Y_{0i}$) for treated ($D_i=1$) and untreated ($D_i=0$) individuals.
+        \begin{itemize}
+            \item Informally, ``Part of the difference in observed outcomes that is not explained by the treatment''
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Quick review of important notions}
+    \begin{itemize}[<+->]
+        \item \textbf{How does random assignment anihilate the selection bias?}: It makes $\mathbb{E}[Y_{0i}|D_i= 1] = \mathbb{E}[Y_{0i}|D_i= 0] $ 
+        \begin{itemize}
+            \item If $D_i$ is randomly assigned, then it is independent from the potential outcomes $\rightarrow$ $\mathbb{E}[Y_{i}|D_i] = \mathbb{E}[Y_{i}]$
+            \item So $\underbrace{\mathbb{E}\left[Y_{0 i} \mid D_{i}=1\right]-\mathbb{E}\left[Y_{0 i} \mid D_{i}=0\right]}_{\text {selection bias }} = 0$ 
+        \end{itemize}
+        \item \textbf{Balance on observables}: $\bar{X}_{D_i=1} \approx \bar{X}_{D_i=0}$
+        \begin{itemize}
+            \item Informally, ``No large differences between the treated and the non-treated group''
+            \item More on how to evaluate if differences are large in next problem set
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Problem set}
+\begin{center}
+    Please open \texttt{Stata} and follow along.
+\end{center}
+ 
+\end{frame}
+
+\end{document}
